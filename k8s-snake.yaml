@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-snake-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-snake
+  template:
+    metadata:
+      labels:
+        app: flask-snake
+    spec:
+      containers:
+      - name: flask-snake
+        image: gcr.io/sathvik-454208/flask-snake
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-snake-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: flask-snake
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 5000
+
