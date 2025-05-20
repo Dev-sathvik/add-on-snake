@@ -6,23 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snake Game</title>
     <style>
-         body{
-            margin:0px;
-            padding:0px;
-            display:flex;
+        body {
+            margin: 0px;
+            padding: 0px;
+            display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
         }
-        canvas{
-            box-shadow: black 20px 10px 50px;
 
+        canvas {
+            box-shadow: black 20px 10px 50px;
         }
     </style>
 </head>
 <body>
     <h1>Snake Game</h1>
-    <canvas id="game" width="400" height="400"/>
+    <canvas id="game" width="400" height="400"></canvas>
+
+    <!-- Define gulp sound URL from Flask backend -->
+    <script>
+        const gulpSoundURL = "{{ url_for('static', filename='gulp.mp3') }}";
+    </script>
+
+    <!-- Load game script -->
+    <script src="{{ url_for('static', filename='snake.js') }}"></script>
 </body>
-<script src="{{ url_for('static', filename='snake.js') }}"></script>
 </html>
+
